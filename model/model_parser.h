@@ -5,7 +5,6 @@ class ModelParser {
  public:
   ModelParser(){};
 
- private:
   int writing_data(FILE *file, float **v, unsigned int **f);
   int read_file(FILE *file, float **v, unsigned int **f, int *size_v,
                 int *size_f);

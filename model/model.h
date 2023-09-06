@@ -7,10 +7,12 @@
 class Model {
  public:
   Model(){};
-
- protected:
-  ModelParser parser;
-  ModelAffineTransfer affineTransfer;
+  ~Model() {
+    delete parser;
+    delete affineTransfer;
+  }
+  ModelParser* parser = new ModelParser();
+  ModelAffineTransfer* affineTransfer = new ModelAffineTransfer();
 }
 
 #endif
