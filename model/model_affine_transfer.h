@@ -2,21 +2,25 @@
 #define MODEL_AFFINE_TRANSFER_H
 
 #include "../viewer_data.h"
+#include "rotation_strategy/rotation_strategy.h"
 
 class ModelAffineTransfer {
  public:
-  ModelAffineTransfer(){};
-  void translate(coordinates &data);
+  ModelAffineTransfer() {}
+  ModelAffineTransfer(RotationStrategy *rot) : rotation(rot) {}
+  ~ModelAffineTransfer() { delete rotation; }
 
-  void rotationOx(coordinates &data);
-  void rotationOy(coordinates &data);
-  void rotationOz(coordinates &data);
-  void rotateArr(coordinates &data);
+  void Rotate(coordinates &data) { rotation->Rotate(data); }
 
-  void scale(coordinates &data);
-  void center(coordinates &data);
-  void objectReduct(coordinates &data);
-  void maxMin(coordinates &data);
-}
+  void Translate(coordinates &data);
+
+  void Scale(coordinates &data);
+  void Center(coordinates &data);
+  void ObjectReduct(coordinates &data);
+  void MaxMin(coordinates &data);
+
+ private:
+  RotationStrategy *rotation;
+};
 
 #endif  // MODEL_AFFINE_TRANSFER_H

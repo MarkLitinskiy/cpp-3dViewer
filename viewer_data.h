@@ -1,3 +1,18 @@
+#ifndef VIEWER_DATA_H
+#define VIEWER_DATA_H
+
+#include <stdio.h>
+
+enum affine {
+  kRotateX,
+  kRotateY,
+  kRotateZ,
+  kTranslate,
+  kCenter,
+  kObjectReduct,
+  kMaxMin,
+  kScale
+};
 
 struct coordinates {
   float num_x;
@@ -14,4 +29,17 @@ struct coordinates {
   float min_y;
   float max_z;
   float min_z;
+
+  affine state;
 };
+
+struct info {
+  FILE file;
+  float **v;
+  unsigned int **f;
+  int *size_v;
+  int *size_f;
+  char *name_file;
+};
+
+#endif  // VIEWER_DATA_H

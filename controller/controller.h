@@ -16,15 +16,11 @@ class Controller {
   Controller(Model* m) : model(m) {}
   Model* model;
 
-  void translate(coordinates& data);
-  void rotationOx(coordinates& data);
-  void rotationOy(coordinates& data);
-  void rotationOz(coordinates& data);
-  void rotateArr(coordinates& data);
-  void scale(coordinates& data);
-  void center(coordinates& data);
-  void objectReduct(coordinates& data);
-  void maxMin(coordinates& data);
-}
+  void SubMethods(coordinates& data);
+  void Rotation(coordinates& data);
+
+  void writing_data(info& data);
+  void read_file(info& data);
+};
 
 #endif  // CONSOLEVIEW_H

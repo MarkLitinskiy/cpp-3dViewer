@@ -2,17 +2,16 @@
 #define MODEL_H
 
 #include "model_affine_transfer.h"
-#include "model_parser.h"
+#include "processing_file/processing_file.h"
 
 class Model {
  public:
-  Model(){};
-  ~Model() {
-    delete parser;
-    delete affineTransfer;
-  }
-  ModelParser* parser = new ModelParser();
-  ModelAffineTransfer* affineTransfer = new ModelAffineTransfer();
-}
+  Model() {}
+  ~Model() { delete parser; }
+  ProcessingFile* parser = new ProcessingFile();
 
-#endif
+  void OtherMethods(coordinates& data);
+  void AffineRotate(coordinates& data);
+};
+
+#endif  // MODEL_H
