@@ -10,17 +10,16 @@ class Controller {
     static Controller instance = Controller(m);
     return instance;
   }
-
- private:
-  Controller() = delete;
-  Controller(Model* m) : model(m) {}
-  Model* model;
-
   void SubMethods(coordinates& data);
   void Rotation(coordinates& data);
 
   void writing_data(info& data);
   void read_file(info& data);
+
+ private:
+  Controller() = delete;
+  Controller(Model* m) : model(m) {}
+  Model* model;
 };
 
 #endif  // CONSOLEVIEW_H
