@@ -1,49 +1,43 @@
 #include "model.h"
 
 void Model::OtherMethods(coordinates& data) {
-  ModelAffineTransfer* affineOther = new ModelAffineTransfer();
+  ModelAffineTransfer affineOther;
+
   switch (data.state) {
     case (affine::kCenter):
-      affineOther->Center(data);
+      affineOther.Center(data);
       break;
     case (affine::kTranslate):
-      affineOther->Translate(data);
+      affineOther.Translate(data);
       break;
     case (affine::kObjectReduct):
-      affineOther->ObjectReduct(data);
+      affineOther.ObjectReduct(data);
       break;
     case (affine::kMaxMin):
-      affineOther->MaxMin(data);
+      affineOther.MaxMin(data);
       break;
     case (affine::kScale):
-      affineOther->Scale(data);
+      affineOther.Scale(data);
       break;
     default:
       break;
   }
-  delete affineOther;
 }
 
 void Model::AffineRotate(coordinates& data) {
-  ModelAffineTransfer* affineTransfer =
-      nullptr;  // Объявляем переменную перед switch и инициализируем ее
-                // значением nullptr
+  ModelAffineTransfer affineTransfer;
+
   switch (data.state) {
     case (affine::kRotateX):
-      affineTransfer = new ModelAffineTransfer(new RotateX);
-      affineTransfer->Rotate(data);
+      affineTransfer.Rotate(RotateX(), data);
       break;
     case (affine::kRotateY):
-      affineTransfer = new ModelAffineTransfer(new RotateY);
-      affineTransfer->Rotate(data);
+      affineTransfer.Rotate(RotateY(), data);
       break;
     case (affine::kRotateZ):
-      affineTransfer = new ModelAffineTransfer(new RotateZ);
-      affineTransfer->Rotate(data);
+      affineTransfer.Rotate(RotateZ(), data);
       break;
     default:
       break;
   }
-  delete affineTransfer;  // Удаляем объект после использования, если он был
-                          // создан
 }

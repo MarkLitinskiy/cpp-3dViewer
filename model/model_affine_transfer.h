@@ -6,11 +6,9 @@
 
 class ModelAffineTransfer {
  public:
-  ModelAffineTransfer() {}
-  ModelAffineTransfer(RotationStrategy *rot) : rotation(rot) {}
-  ~ModelAffineTransfer() { delete rotation; }
-
-  void Rotate(coordinates &data) { rotation->Rotate(data); }
+  void Rotate(const RotationStrategy &rotation, coordinates &data) {
+    rotation.Rotate(data);
+  }
 
   void Translate(coordinates &data);
 
@@ -18,9 +16,6 @@ class ModelAffineTransfer {
   void Center(coordinates &data);
   void ObjectReduct(coordinates &data);
   void MaxMin(coordinates &data);
-
- private:
-  RotationStrategy *rotation;
 };
 
 #endif  // MODEL_AFFINE_TRANSFER_H
